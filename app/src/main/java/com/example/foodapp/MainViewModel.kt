@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foodapp.data.Repository
 import com.example.foodapp.models.FoodRecipe
+import com.example.foodapp.usercase.RecipeUsecase
 import com.example.foodapp.utils.NetworkResults
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: Repository,
+    private val recipeUsecase: RecipeUsecase,
     application: Application
 ) : AndroidViewModel(application) {
     var recipesResponse: MutableLiveData<NetworkResults<FoodRecipe>> = MutableLiveData()
@@ -29,7 +30,7 @@ class MainViewModel @Inject constructor(
         recipesResponse.value = NetworkResults.Loading()
         if (hasInternetConnection()) {
             try {
-                val response = repository.remote.getRecipe(queries)
+                val response = recipeUsecase.getRecipe(queries)
                 recipesResponse.value = handleFoodRecipeResponse(response)!!
             } catch (e: Exception) {
                 recipesResponse.value = NetworkResults.Error("Recipes Not Found")
