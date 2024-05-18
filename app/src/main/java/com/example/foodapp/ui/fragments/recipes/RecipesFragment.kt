@@ -15,6 +15,8 @@ import com.example.foodapp.MainViewModel
 import com.example.foodapp.R
 import com.example.foodapp.adapter.RecipesAdapter
 import com.example.foodapp.databinding.FragmentRecipesBinding
+import com.example.foodapp.extensions.hide
+import com.example.foodapp.extensions.show
 import com.example.foodapp.utils.Constants.Companion.API_KEY
 import com.example.foodapp.utils.NetworkResults
 import dagger.hilt.android.AndroidEntryPoint
@@ -77,11 +79,11 @@ class RecipesFragment : Fragment() {
     }
 
     private fun showShimmerEffect() {
-        binding.progressBar.visibility = View.VISIBLE
+        binding.progressBar.show()
     }
 
     private fun hideShimmerEffect() {
-        binding.progressBar.visibility = View.GONE
+        binding.progressBar.hide()
     }
 
 }
