@@ -77,11 +77,11 @@ class RecipesFragment : Fragment() {
     }
 
     private fun showShimmerEffect() {
-       // binding.recyclerview.showShimmer()
+        binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun hideShimmerEffect() {
-       // binding.recyclerview.hideShimmer()
+        binding.progressBar.visibility = View.GONE
     }
 
 }
