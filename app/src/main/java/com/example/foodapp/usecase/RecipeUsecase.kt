@@ -1,4 +1,4 @@
-package com.example.foodapp.usercase
+package com.example.foodapp.usecase
 
 import com.example.foodapp.data.Repository
 import com.example.foodapp.models.FoodRecipe
